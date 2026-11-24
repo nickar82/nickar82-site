@@ -5,6 +5,10 @@ import os, html, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 YT = "https://www.youtube.com/@nickar82"
 LINKTREE = "https://linktr.ee/DJNickar"
+TRAILER = "XggUQojWwqk"
+GAMEPLAY = "9RpvdBLgC6g"
+SWRC_COVER = "https://img.itch.zone/aW1nLzMyNjc2OTA4LnBuZw==/original/Gq25pS.png"
+SWRC_SHOTS = ['https://img.itch.zone/aW1hZ2UvNTQyMzg4OC8zMjY3NjkyNy5qcGc=/original/eTc%2ByM.jpg', 'https://img.itch.zone/aW1hZ2UvNTQyMzg4OC8zMjY3NjkyNi5qcGc=/original/4gkXI4.jpg', 'https://img.itch.zone/aW1hZ2UvNTQyMzg4OC8zMjY3NjkyNS5qcGc=/original/a8btcV.jpg', 'https://img.itch.zone/aW1hZ2UvNTQyMzg4OC8zMjY3NjkyOC5qcGc=/original/EJbsL1.jpg', 'https://img.itch.zone/aW1hZ2UvNTQyMzg4OC8zMjY3NjkyNC5qcGc=/original/W1pj1L.jpg']
 COFFEE = "https://buymeacoffee.com/nickar82p"
 SOCIAL = [("YouTube", "https://www.youtube.com/@nickar82"), ("Instagram", "https://www.instagram.com/nickar_82"),
           ("X", "https://x.com/nickar82"), ("TikTok", "https://www.tiktok.com/@dj_nickar")]
@@ -90,14 +94,15 @@ def page(path, title, desc, body, active=None):
 
 # ---------- shared bits ----------
 GAMES = [
-    dict(slug="/games/swrc89/", name="Super World Road Challenge '89", status="Coming December 2026",
-         text="16-bit arcade racing on real roads around the world, with split-screen couch co-op.",
-         meta="Windows · Linux · Steam Deck · Android"),
+    dict(slug="/games/swrc89/", name="Super World Road Challenge '89", status="Out now on itch.io",
+         text="Real roads. Real curves. Pure arcade. 32 stages rebuilt from real map data, with split-screen couch racing.",
+         meta="Windows · Linux · Steam & Android coming", img=SWRC_COVER),
     dict(slug=None, name="Mars Wars", status="In development",
          text="A synthwave space shooter — the remake of an old Nickar project, now with Star Fox-style flight.",
-         meta="PC · Gamepad"),
-    dict(slug=None, name="Ink Squadron", status="Android · Testing",
-         text="Coming soon to Google Play.", meta="Android"),
+         meta="PC · Gamepad", img=None),
+    dict(slug=None, name="Ink Squadron: Paper Dogfight", status="Android · Closed testing",
+         text="Draw your battle on paper! Dice dogfights, real-time waves and 1 VS 1 duels on a school notebook.",
+         meta="Android · Coming to Google Play", img=None),
 ]
 APPS = [
     dict(icon="A", name="AimMap", platform="Android app",
@@ -117,7 +122,8 @@ POSTS = [
 
 
 def game_card(g):
-    inner = f"""<div class="thumb">{html.escape(g['name'])}</div>
+    thumb = f'<img class="thumb" src="{g["img"]}" alt="" loading="lazy" style="object-fit:cover;width:100%;padding:0">' if g.get("img") else f'<div class="thumb">{html.escape(g["name"])}</div>'
+    inner = f"""{thumb}
 <div class="body"><span class="status">{g['status']}</span><h3>{html.escape(g['name'])}</h3><p>{g['text']}</p><span class="meta">{g['meta']}</span></div>"""
     return f'<a class="card" href="{g["slug"]}">{inner}</a>' if g["slug"] else f'<article class="card">{inner}</article>'
 
@@ -161,14 +167,14 @@ page("index.html", "Home", "Nickar Electronic Games '82 makes retro-spirited gam
 
 <section class="wrap section" aria-labelledby="feat">
 <div class="feature">
-<div class="media"><a href="/games/swrc89/" class="placeholder-art" style="text-decoration:none">SUPER WORLD ROAD CHALLENGE '89</a></div>
+<div class="media"><iframe class="video" src="https://www.youtube-nocookie.com/embed/{TRAILER}" title="Super World Road Challenge '89 — trailer" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
 <div class="copy">
-<p class="eyebrow">Featured · Coming December 2026</p>
+<p class="eyebrow">Featured · Out now on itch.io</p>
 <h2 id="feat" class="display">Super World Road Challenge '89</h2>
-<p style="font-size:18px;margin:0 0 24px">A 16-bit arcade racer on real roads from around the world — including a 1:1 ring around Sithonia. Couch co-op, five cabrios, and a radio full of tunes.</p>
+<p style="font-size:18px;margin:0 0 24px">Real roads. Real curves. Pure arcade. A 16-bit racer across 32 stages rebuilt from real map data — from the Amalfi coast to the Stelvio Pass, from Big Sur to the Karakoram Highway. Steam and Android coming soon.</p>
 <div class="btn-row">
-<a class="btn btn-pink" href="/games/swrc89/">See the game</a>
-<a class="btn btn-line" href="{ITCH_SWRC}" rel="noopener">itch.io</a>
+<a class="btn btn-sun" href="{ITCH_SWRC}" rel="noopener">Buy on itch.io — €8.99</a>
+<a class="btn btn-line" href="/games/swrc89/">See the game</a>
 </div>
 </div>
 </div>
@@ -207,46 +213,70 @@ page("games/index.html", "Games", "Games by Nickar — retro-spirited arcade gam
 """, active="Games")
 
 # ---------- SWRC ----------
+SHOTS_HTML = "".join(f'<a href="{u}"><img src="{u}" alt="Super World Road Challenge \'89 screenshot {n}" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px"></a>' for n, u in enumerate(SWRC_SHOTS, 1))
 page("games/swrc89/index.html", "Super World Road Challenge '89",
-     "Super World Road Challenge '89 — a 16-bit arcade racer on real roads. Coming December 2026 to Windows, Linux, Steam Deck and Android.", f"""
-<section class="game-hero">
+     "Super World Road Challenge '89 — real roads, real curves, pure arcade. A 16-bit racer for Windows and Linux, out now on itch.io.", f"""
+<section class="game-hero" style="background:#0d0221 url('{SWRC_COVER}') center/cover no-repeat">
 <div class="shade"><div class="wrap">
-<p class="eyebrow">Racing · 1–2 players · Coming December 2026</p>
+<p class="eyebrow">Racing · 1–2 players · Out now on itch.io</p>
 <h1>Super World Road Challenge '89</h1>
 </div></div>
 </section>
 
 <div class="wrap two-col">
 <div class="main">
-<p style="font-size:20px;line-height:1.7;margin-top:0">Cruise real roads around the world in a 16-bit arcade racer. Pick one of five cabrios, tune the radio, and drive stages built at true scale — from a full ring around the Sithonia peninsula to coasts, forests, cities, deserts, snow and mountains.</p>
-<div class="shots">
-<div>[SCREENSHOT]</div><div>[SCREENSHOT]</div><div>[SCREENSHOT]</div><div>[SCREENSHOT]</div>
-</div>
-<h2 class="display" style="font-size:28px;margin:40px 0 12px">Features</h2>
+<p style="font-size:22px;margin-top:0;color:var(--cream)"><strong>Real roads. Real curves. Pure arcade.</strong></p>
+<p style="font-size:19px;line-height:1.7">A love letter to the arcade racers of the late 80s and early 90s — but every road is real. 32 stages were rebuilt from real map data, with true turns, hairpins, climbs and drops, from the Amalfi coast to the Stelvio Pass, from Big Sur to the Karakoram Highway. Pick your cabrio, tune the radio and hit the road with Iva, your co-driver, calling every bend ahead.</p>
+<iframe class="video" src="https://www.youtube-nocookie.com/embed/{TRAILER}" title="Super World Road Challenge '89 — trailer" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+<h2 class="display" style="font-size:28px;margin:40px 0 16px">Screenshots</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px">{SHOTS_HTML}</div>
+
+<h2 class="display" style="font-size:28px;margin:40px 0 12px">Around the world in 32 stages</h2>
 <ul style="font-size:18px;line-height:1.9;padding-left:22px;margin:0">
-<li>Stages built from real roads at true scale</li>
-<li>Arcade, touring, championship and quick race modes</li>
-<li>Split-screen couch co-op for two players</li>
-<li>Five cabrios from different eras</li>
-<li>Full gamepad support, km or miles</li>
-<li>Hidden bonus tracks somewhere out of this world</li>
+<li>Europe, the Americas, Asia-Pacific, Africa &amp; the Middle East — seven stages each</li>
+<li>Four huge ring roads around Sithonia, Oahu, Jeju and the Cape Peninsula</li>
+<li>Coastlines, deserts, forests, snowy passes, neon cities and tunnels</li>
+<li>Day, sunset and night, with rain, fog, wind, storms and snow</li>
 </ul>
-<h2 class="display" style="font-size:28px;margin:40px 0 12px">Trailer</h2>
-<p><a href="{YT}" rel="noopener">Watch the official trailer on YouTube →</a></p>
+<h2 class="display" style="font-size:28px;margin:40px 0 12px">Five cabrios</h2>
+<p style="font-size:18px">A '91 Italian supercar, a '70 American muscle car, an '89 German cabrio, a '92 Japanese roadster and a '58 Italian classic — each with its own top speed, acceleration, braking and grip.</p>
+<h2 class="display" style="font-size:28px;margin:40px 0 12px">Race your way</h2>
+<ul style="font-size:18px;line-height:1.9;padding-left:22px;margin:0">
+<li><strong>Time Attack</strong> — beat the clock from checkpoint to checkpoint</li>
+<li><strong>Race</strong> — up to 7 AI rivals, each with their own car and driving style</li>
+<li><strong>Elimination</strong> — the last car at every gate is out</li>
+<li><strong>Chase</strong> — catch the rival who started ahead</li>
+<li><strong>Championships</strong> — eleven cups, up to The Complete Challenge across all 32 stages</li>
+<li><strong>1 VS 1 split screen</strong> — couch racing for two on one PC</li>
+</ul>
+<h2 class="display" style="font-size:28px;margin:40px 0 12px">Smash, boost, escape</h2>
+<ul style="font-size:18px;line-height:1.9;padding-left:22px;margin:0">
+<li>Takedowns: ram traffic, rivals and police until they spin out</li>
+<li>Nitro cans for the long straights</li>
+<li>Police chases when you pass a speed trap too fast</li>
+<li>Burnout launches — hold brake and gas, let go, leave smoke behind</li>
+</ul>
+<h2 class="display" style="font-size:28px;margin:40px 0 12px">Pure 16-bit style</h2>
+<p style="font-size:18px">Detailed pixel art, a CRT filter with scanlines, original synthwave and arcade music on the in-car radio, and a talkative co-driver with her own voice.</p>
+<h2 class="display" style="font-size:28px;margin:40px 0 16px">Gameplay</h2>
+<iframe class="video" src="https://www.youtube-nocookie.com/embed/{GAMEPLAY}" title="Super World Road Challenge '89 — gameplay" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
 </div>
 <aside aria-label="Get the game">
 <div class="buy">
 <p style="margin:0;color:var(--soft)">Price</p>
 <p class="display" style="margin:0;font-size:40px;color:var(--yellow)">€8.99</p>
-<a class="btn btn-sun" href="{ITCH_SWRC}" rel="noopener">Get it on itch.io</a>
+<a class="btn btn-sun" href="{ITCH_SWRC}" rel="noopener">Buy on itch.io</a>
 <span class="btn btn-soon">Steam — coming soon</span>
 <span class="btn btn-soon">GOG — coming soon</span>
 <span class="btn btn-soon">Google Play — coming soon</span>
 <hr>
 <dl>
-<dt>Release</dt><dd>December 2026</dd>
-<dt>Platforms</dt><dd>Windows · Linux · Steam Deck · Android</dd>
-<dt>Players</dt><dd>1–2 (local)</dd>
+<dt>Status</dt><dd>Out now on itch.io</dd>
+<dt>Platforms</dt><dd>Windows · Linux</dd>
+<dt>Players</dt><dd>1–2 (local split screen)</dd>
+<dt>Controls</dt><dd>Gamepad, keyboard, remapping</dd>
+<dt>Language</dt><dd>English</dd>
+<dt>DRM</dt><dd>DRM-free</dd>
 <dt>Developer</dt><dd>Nickar Electronic Games '82</dd>
 </dl>
 <a href="/press/">Press kit →</a>
@@ -272,7 +302,7 @@ page("blog/hello-world/index.html", "Hello, world — nickar82.com is live", "Th
 <section class="page-hero"><div class="wrap"><p class="tag" style="margin:0 0 10px">News · 2026-11-24</p><h1>Hello, world — nickar82.com is live</h1></div></section>
 <article class="wrap section prose">
 <p>This is the new home of Nickar: the games, apps and small utilities I make, plus a devlog about how they get made.</p>
-<p>First up is <a href="/games/swrc89/">Super World Road Challenge '89</a>, a 16-bit racer on real roads, coming in December 2026. After that: the Mars Wars remake, and a handful of tools for Android, Windows and Chrome.</p>
+<p>First up is <a href="/games/swrc89/">Super World Road Challenge '89</a>, a 16-bit racer on real roads — out now on itch.io, with Steam and Android coming soon. After that: the Mars Wars remake, and a handful of tools for Android, Windows and Chrome.</p>
 <p>Some things will be free, some paid — you'll be able to get them here or on the usual stores. Follow along on <a href="{YT}" rel="noopener">YouTube</a> for trailers and updates.</p>
 <p><a href="/blog/">← All posts</a></p>
 </article>
@@ -316,8 +346,8 @@ page("press/index.html", "Press kit", "Press kit for Nickar and Super World Road
 <h2>Logos</h2>
 <p><a href="/assets/img/logo.webp" download>Nickar logo (1600×900)</a> · <a href="/assets/img/icon-512.png" download>Pixel “N” icon (512×512)</a></p>
 <h2>Super World Road Challenge '89</h2>
-<ul><li>Genre: 16-bit arcade racing</li><li>Platforms: Windows, Linux, Steam Deck, Android</li><li>Release: December 2026</li><li>Price: €8.99</li><li>Players: 1–2 local split screen</li></ul>
-<p>Screenshots and trailer: [LINKS]</p>
+<ul><li>Genre: 16-bit arcade racing on real roads</li><li>Platforms: Windows, Linux (Steam and Android coming)</li><li>Released: November 2026 on itch.io</li><li>Price: €8.99</li><li>Players: 1–2 local split screen</li><li>Stages: 32, rebuilt from real map data</li></ul>
+<p>Trailer: <a href="https://www.youtube.com/watch?v={TRAILER}">YouTube</a> · Gameplay: <a href="https://www.youtube.com/watch?v={GAMEPLAY}">YouTube</a> · Screenshots and store page: <a href="{ITCH_SWRC}">itch.io</a></p>
 </article>
 """, active="Press kit")
 
