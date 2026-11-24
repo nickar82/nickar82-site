@@ -294,7 +294,6 @@ page("about/index.html", "About", "About Nickar Electronic Games '82, an indepen
 <li><a href="https://nickar82.itch.io" rel="noopener">itch.io — nickar82</a></li>
 <li><a href="{LINKTREE}" rel="noopener">You can find more of me here — linktr.ee/DJNickar</a></li>
 <li>Email: <a href="mailto:nickar82@gmail.com">nickar82@gmail.com</a></li>
-<li>WhatsApp / phone: <a href="https://wa.me/306980154538" rel="noopener">+30 698 015 4538</a></li>
 </ul>
 </article>
 """, active="About")
