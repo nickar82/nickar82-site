@@ -4,6 +4,8 @@ import os, html
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 YT = "https://www.youtube.com/@nickar82"
+LINKTREE = "https://linktr.ee/DJNickar"
+STUDIO = "Nickar Electronic Games '82"
 ITCH_SWRC = "https://nickar82.itch.io/swrc89"
 
 NAV = [("Games", "/games/"), ("Apps", "/apps/"), ("Blog", "/blog/"), ("About", "/about/"), ("Press kit", "/press/")]
@@ -13,7 +15,7 @@ def page(path, title, desc, body, active=None):
     nav = "\n".join(
         f'<li><a href="{href}"{" aria-current=\"page\"" if active == label else ""}>{label}</a></li>'
         for label, href in NAV)
-    full_title = "Nickar — Games · Apps · Utilities" if path == "index.html" else f"{title} — Nickar"
+    full_title = f"{STUDIO} — Games · Apps · Utilities" if path == "index.html" else f"{title} — {STUDIO}"
     out = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -51,11 +53,12 @@ def page(path, title, desc, body, active=None):
 <div class="wrap">
 <div>
 <a class="brand" href="/"><img src="/assets/img/icon-32.png" alt="" width="30" height="30">NICKAR<span>'82</span></a>
-<small>© 2026 Nickar · Games · Apps · Utilities</small>
+<small>© 2026 {STUDIO} · Games · Apps · Utilities</small>
 </div>
 <div class="links">
 <a href="{YT}" rel="noopener">YouTube</a>
 <a href="{ITCH_SWRC}" rel="noopener">itch.io</a>
+<a href="{LINKTREE}" rel="noopener">More of me</a>
 <a href="/blog/">Blog</a>
 <a href="/press/">Press kit</a>
 <a href="/privacy/">Privacy</a>
@@ -127,13 +130,13 @@ YT_CTA = f"""<section class="wrap" style="padding-bottom:72px">
 </section>"""
 
 # ---------- HOME ----------
-page("index.html", "Home", "Nickar makes retro-spirited games, handy apps and small utilities — some free, some paid.", f"""
+page("index.html", "Home", "Nickar Electronic Games '82 makes retro-spirited games, handy apps and small utilities — some free, some paid.", f"""
 <section class="hero">
 <div class="grid-floor" aria-hidden="true"></div>
 <div class="hero-inner">
 <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Nickar Electronic Games '82</h1>
 <img class="hero-logo" src="/assets/img/logo.webp" width="1600" height="900" alt="Nickar Electronic Games '82 — Games · Apps · Utilities" fetchpriority="high">
-<p class="lead">Retro-spirited games, handy apps and small tools — made by one developer, with love for the 16-bit era.</p>
+<p class="lead">Retro-spirited games, handy apps and small tools — made by one developer.</p>
 <div class="btn-row">
 <a class="btn btn-sun" href="/games/">Browse games</a>
 <a class="btn btn-cyan" href="/apps/">Apps &amp; utilities</a>
@@ -229,7 +232,7 @@ page("games/swrc89/index.html", "Super World Road Challenge '89",
 <dt>Release</dt><dd>December 2026</dd>
 <dt>Platforms</dt><dd>Windows · Linux · Steam Deck · Android</dd>
 <dt>Players</dt><dd>1–2 (local)</dd>
-<dt>Developer</dt><dd>Nickar</dd>
+<dt>Developer</dt><dd>Nickar Electronic Games '82</dd>
 </dl>
 <a href="/press/">Press kit →</a>
 </div>
@@ -261,15 +264,16 @@ page("blog/hello-world/index.html", "Hello, world — nickar82.com is live", "Th
 """, active="Blog")
 
 # ---------- ABOUT ----------
-page("about/index.html", "About", "About Nickar, an independent developer of games, apps and utilities.", f"""
-<section class="page-hero"><div class="wrap"><h1>About Nickar</h1><p>One developer, a lot of synthwave, and a soft spot for 16-bit consoles.</p></div></section>
+page("about/index.html", "About", "About Nickar Electronic Games '82, an independent developer of games, apps and utilities.", f"""
+<section class="page-hero"><div class="wrap"><h1>About Nickar Electronic Games '82</h1><p>One developer, a lot of synthwave, and a soft spot for 16-bit consoles.</p></div></section>
 <article class="wrap section prose">
-<p>Nickar is the studio name of Nikolaos Karazafeiris, an independent developer making retro-spirited games and practical little apps.</p>
+<p>Nickar Electronic Games '82 is the studio of Nikolaos Karazafeiris, an independent developer making retro-spirited games and practical little apps.</p>
 <p>The games aim for the feel of late-80s and early-90s arcades and consoles. The apps and utilities start as tools I wanted for myself — and get released when they might be useful to you too.</p>
 <h2>Find me</h2>
 <ul>
 <li><a href="{YT}" rel="noopener">YouTube — @nickar82</a></li>
 <li><a href="https://nickar82.itch.io" rel="noopener">itch.io — nickar82</a></li>
+<li><a href="{LINKTREE}" rel="noopener">You can find more of me here — linktr.ee/DJNickar</a></li>
 <li>Email: [CONTACT EMAIL]</li>
 </ul>
 </article>
@@ -280,7 +284,7 @@ page("press/index.html", "Press kit", "Press kit for Nickar and Super World Road
 <section class="page-hero"><div class="wrap"><h1>Press kit</h1><p>Logos, facts and media for press, streamers and YouTubers. Free to use when covering Nickar games.</p></div></section>
 <article class="wrap section prose">
 <h2 style="margin-top:0">Studio</h2>
-<ul><li>Name: Nickar</li><li>Developer: Nikolaos Karazafeiris (solo)</li><li>Website: nickar82.com</li><li>Contact: [CONTACT EMAIL]</li></ul>
+<ul><li>Name: Nickar Electronic Games '82</li><li>Developer: Nikolaos Karazafeiris (solo)</li><li>Website: nickar82.com</li><li>Contact: [CONTACT EMAIL]</li></ul>
 <h2>Logos</h2>
 <p><a href="/assets/img/logo.webp" download>Nickar logo (1600×900)</a> · <a href="/assets/img/icon-512.png" download>Pixel “N” icon (512×512)</a></p>
 <h2>Super World Road Challenge '89</h2>
