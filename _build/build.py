@@ -5,7 +5,7 @@ import os, html
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 YT = "https://www.youtube.com/@nickar82"
 LINKTREE = "https://linktr.ee/DJNickar"
-COFFEE = "https://buymeacoffee.com/aichoes"
+COFFEE = "https://buymeacoffee.com/nickar82p"
 SOCIAL = [("YouTube", "https://www.youtube.com/@nickar82"), ("Instagram", "https://www.instagram.com/nickar_82"),
           ("X", "https://x.com/nickar82"), ("TikTok", "https://www.tiktok.com/@dj_nickar")]
 STUDIO = "Nickar Electronic Games '82"
@@ -282,8 +282,9 @@ page("about/index.html", "About", "About Nickar Electronic Games '82, an indepen
 <p>My AI music project <strong>AIchoes by DJ Nickar</strong> has its own channel:</p>
 <p><a class="btn btn-cyan" href="https://www.youtube.com/@AIchoes" rel="noopener">AIchoes on YouTube</a></p>
 <h2>Support my creations</h2>
-<p>Many of my tools are free. If one of them helped you, a coffee keeps the next one coming.</p>
-<p><a class="btn btn-sun" href="{COFFEE}" rel="noopener">☕ Buy me a coffee</a></p>
+<p>Many of my tools are free. If one of them helped you, a coffee keeps the next one coming — or become a monthly supporter for $1 a month (cancel anytime).</p>
+<div class="btn-row"><a class="btn btn-sun" href="{COFFEE}" rel="noopener">☕ Buy me a coffee</a>
+<a class="btn btn-line" href="{COFFEE}/membership" rel="noopener">Support $1/month</a></div>
 <h2>Find me</h2>
 <ul>
 <li><a href="{YT}" rel="noopener">YouTube — @nickar82</a></li>
