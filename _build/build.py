@@ -1,6 +1,6 @@
 """Builds the static nickar82.com site: python3 _build/build.py (run from the site root).
 Shared header/footer live here; each page body is below. Output: plain .html files."""
-import os, html
+import os, html, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 YT = "https://www.youtube.com/@nickar82"
@@ -73,6 +73,15 @@ def page(path, title, desc, body, active=None):
 </body>
 </html>
 """
+    # every external link opens in a new tab
+    def ext(m):
+        tag = m.group(0)
+        if 'target=' not in tag:
+            tag = tag[:-1] + ' target="_blank">'
+        if 'rel=' not in tag:
+            tag = tag[:-1] + ' rel="noopener">'
+        return tag
+    out = re.sub(r'<a\b[^>]*\bhref="https?://[^"]*"[^>]*>', ext, out)
     dest = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(dest), exist_ok=True)
     with open(dest, "w", encoding="utf-8") as f:
@@ -282,9 +291,8 @@ page("about/index.html", "About", "About Nickar Electronic Games '82, an indepen
 <p>My AI music project <strong>AIchoes by DJ Nickar</strong> has its own channel:</p>
 <p><a class="btn btn-cyan" href="https://www.youtube.com/@AIchoes" rel="noopener">AIchoes on YouTube</a></p>
 <h2>Support my creations</h2>
-<p>Many of my tools are free. If one of them helped you, a coffee keeps the next one coming — or become a monthly supporter for $1 a month (cancel anytime).</p>
-<div class="btn-row"><a class="btn btn-sun" href="{COFFEE}" rel="noopener">☕ Buy me a coffee</a>
-<a class="btn btn-line" href="{COFFEE}/membership" rel="noopener">Support $1/month</a></div>
+<p>Many of my tools are free. If one of them helped you, a coffee keeps the next one coming.</p>
+<p><a class="btn btn-sun" href="{COFFEE}" rel="noopener">☕ Buy me a coffee</a></p>
 <h2>Find me</h2>
 <ul>
 <li><a href="{YT}" rel="noopener">YouTube — @nickar82</a></li>
