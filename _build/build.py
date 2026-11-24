@@ -65,6 +65,7 @@ def page(path, title, desc, body, active=None):
 <a href="/blog/">Blog</a>
 <a href="/press/">Press kit</a>
 <a href="/privacy/">Privacy</a>
+<a href="mailto:nickar82@gmail.com">Contact</a>
 <a href="{COFFEE}" rel="noopener">☕ Buy me a coffee</a>
 </div>
 </div>
@@ -278,8 +279,8 @@ page("about/index.html", "About", "About Nickar Electronic Games '82, an indepen
 <p>As <strong>DJ Nickar</strong> I make music too — the album <em>Da Bass</em> is out now.</p>
 <div class="btn-row"><a class="btn btn-line" href="http://tinyurl.com/DJNickarDaBassSp" rel="noopener">Da Bass on Spotify</a>
 <a class="btn btn-line" href="http://tinyurl.com/DJ-NickarYTmusic" rel="noopener">Da Bass on YouTube Music</a></div>
-<h2>More projects</h2>
-<ul><li><a href="https://justgamergr.wordpress.com/" rel="noopener">Just Gamer v2.0</a> — my gaming blog</li></ul>
+<p>My AI music project <strong>AIchoes by DJ Nickar</strong> has its own channel:</p>
+<p><a class="btn btn-cyan" href="https://www.youtube.com/@AIchoes" rel="noopener">AIchoes on YouTube</a></p>
 <h2>Support my creations</h2>
 <p>Many of my tools are free. If one of them helped you, a coffee keeps the next one coming.</p>
 <p><a class="btn btn-sun" href="{COFFEE}" rel="noopener">☕ Buy me a coffee</a></p>
@@ -292,7 +293,8 @@ page("about/index.html", "About", "About Nickar Electronic Games '82, an indepen
 <li><a href="http://facebook.com/nick.kar82" rel="noopener">Facebook</a></li>
 <li><a href="https://nickar82.itch.io" rel="noopener">itch.io — nickar82</a></li>
 <li><a href="{LINKTREE}" rel="noopener">You can find more of me here — linktr.ee/DJNickar</a></li>
-<li>Email: [CONTACT EMAIL]</li>
+<li>Email: <a href="mailto:nickar82@gmail.com">nickar82@gmail.com</a></li>
+<li>WhatsApp / phone: <a href="https://wa.me/306980154538" rel="noopener">+30 698 015 4538</a></li>
 </ul>
 </article>
 """, active="About")
@@ -302,7 +304,7 @@ page("press/index.html", "Press kit", "Press kit for Nickar and Super World Road
 <section class="page-hero"><div class="wrap"><h1>Press kit</h1><p>Logos, facts and media for press, streamers and YouTubers. Free to use when covering Nickar games.</p></div></section>
 <article class="wrap section prose">
 <h2 style="margin-top:0">Studio</h2>
-<ul><li>Name: Nickar Electronic Games '82</li><li>Developer: Nikolaos Karazafeiris (solo)</li><li>Website: nickar82.com</li><li>Contact: [CONTACT EMAIL]</li></ul>
+<ul><li>Name: Nickar Electronic Games '82</li><li>Developer: Nikolaos Karazafeiris (solo)</li><li>Website: nickar82.com</li><li>Contact: <a href="mailto:nickar82@gmail.com">nickar82@gmail.com</a></li></ul>
 <h2>Logos</h2>
 <p><a href="/assets/img/logo.webp" download>Nickar logo (1600×900)</a> · <a href="/assets/img/icon-512.png" download>Pixel “N” icon (512×512)</a></p>
 <h2>Super World Road Challenge '89</h2>
@@ -317,7 +319,7 @@ page("privacy/index.html", "Privacy", "Privacy policy for nickar82.com.", f"""
 <article class="wrap section prose">
 <p>nickar82.com does not use cookies, does not run ads and does not collect personal data.</p>
 <p>The site loads fonts from Google Fonts, which receives your IP address when it serves them. Links to YouTube, itch.io and other stores lead to sites with their own privacy policies.</p>
-<p>Privacy policies for individual apps are listed on each app's page. Questions: [CONTACT EMAIL].</p>
+<p>Privacy policies for individual apps are listed on each app's page. Questions: <a href="mailto:nickar82@gmail.com">nickar82@gmail.com</a>.</p>
 </article>
 """)
 
