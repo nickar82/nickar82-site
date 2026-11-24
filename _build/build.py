@@ -173,7 +173,7 @@ page("index.html", "Home", "Nickar Electronic Games '82 makes retro-spirited gam
 <h2 id="feat" class="display">Super World Road Challenge '89</h2>
 <p style="font-size:18px;margin:0 0 24px">Real roads. Real curves. Pure arcade. A 16-bit racer across 32 stages rebuilt from real map data — from the Amalfi coast to the Stelvio Pass, from Big Sur to the Karakoram Highway. Steam and Android coming soon.</p>
 <div class="btn-row">
-<a class="btn btn-sun" href="{ITCH_SWRC}" rel="noopener">Buy on itch.io — €8.99</a>
+<a class="btn btn-sun" href="{ITCH_SWRC}" rel="noopener">Buy on itch.io — €4.99</a>
 <a class="btn btn-line" href="/games/swrc89/">See the game</a>
 </div>
 </div>
@@ -264,7 +264,7 @@ page("games/swrc89/index.html", "Super World Road Challenge '89",
 <aside aria-label="Get the game">
 <div class="buy">
 <p style="margin:0;color:var(--soft)">Price</p>
-<p class="display" style="margin:0;font-size:40px;color:var(--yellow)">€8.99</p>
+<p class="display" style="margin:0;font-size:40px;color:var(--yellow)">€4.99</p>
 <a class="btn btn-sun" href="{ITCH_SWRC}" rel="noopener">Buy on itch.io</a>
 <span class="btn btn-soon">Steam — coming soon</span>
 <span class="btn btn-soon">GOG — coming soon</span>
@@ -346,7 +346,7 @@ page("press/index.html", "Press kit", "Press kit for Nickar and Super World Road
 <h2>Logos</h2>
 <p><a href="/assets/img/logo.webp" download>Nickar logo (1600×900)</a> · <a href="/assets/img/icon-512.png" download>Pixel “N” icon (512×512)</a></p>
 <h2>Super World Road Challenge '89</h2>
-<ul><li>Genre: 16-bit arcade racing on real roads</li><li>Platforms: Windows, Linux (Steam and Android coming)</li><li>Released: November 2026 on itch.io</li><li>Price: €8.99</li><li>Players: 1–2 local split screen</li><li>Stages: 32, rebuilt from real map data</li></ul>
+<ul><li>Genre: 16-bit arcade racing on real roads</li><li>Platforms: Windows, Linux (Steam and Android coming)</li><li>Released: November 2026 on itch.io</li><li>Price: €4.99</li><li>Players: 1–2 local split screen</li><li>Stages: 32, rebuilt from real map data</li></ul>
 <p>Trailer: <a href="https://www.youtube.com/watch?v={TRAILER}">YouTube</a> · Gameplay: <a href="https://www.youtube.com/watch?v={GAMEPLAY}">YouTube</a> · Screenshots and store page: <a href="{ITCH_SWRC}">itch.io</a></p>
 </article>
 """, active="Press kit")
