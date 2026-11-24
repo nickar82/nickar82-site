@@ -5,6 +5,9 @@ import os, html
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 YT = "https://www.youtube.com/@nickar82"
 LINKTREE = "https://linktr.ee/DJNickar"
+COFFEE = "https://buymeacoffee.com/aichoes"
+SOCIAL = [("YouTube", "https://www.youtube.com/@nickar82"), ("Instagram", "https://www.instagram.com/nickar_82"),
+          ("X", "https://x.com/nickar82"), ("TikTok", "https://www.tiktok.com/@dj_nickar")]
 STUDIO = "Nickar Electronic Games '82"
 ITCH_SWRC = "https://nickar82.itch.io/swrc89"
 
@@ -56,12 +59,13 @@ def page(path, title, desc, body, active=None):
 <small>© 2026 {STUDIO} · Games · Apps · Utilities</small>
 </div>
 <div class="links">
-<a href="{YT}" rel="noopener">YouTube</a>
+{''.join(f'<a href="{u}" rel="noopener">{n}</a>' for n, u in SOCIAL)}
 <a href="{ITCH_SWRC}" rel="noopener">itch.io</a>
 <a href="{LINKTREE}" rel="noopener">More of me</a>
 <a href="/blog/">Blog</a>
 <a href="/press/">Press kit</a>
 <a href="/privacy/">Privacy</a>
+<a href="{COFFEE}" rel="noopener">☕ Buy me a coffee</a>
 </div>
 </div>
 </footer>
@@ -125,7 +129,8 @@ YT_CTA = f"""<section class="wrap" style="padding-bottom:72px">
 <div class="cta">
 <div style="flex:1 1 360px"><h2>Insert coin: follow the devlog</h2>
 <p>Trailers, devlogs and new releases land on YouTube first. Newsletter coming soon.</p></div>
-<a class="btn btn-sun" href="{YT}" rel="noopener">Subscribe on YouTube</a>
+<div class="btn-row"><a class="btn btn-sun" href="{YT}" rel="noopener">Subscribe on YouTube</a>
+<a class="btn btn-line" href="{COFFEE}" rel="noopener">Buy me a coffee</a></div>
 </div>
 </section>"""
 
@@ -268,10 +273,23 @@ page("about/index.html", "About", "About Nickar Electronic Games '82, an indepen
 <section class="page-hero"><div class="wrap"><h1>About Nickar Electronic Games '82</h1><p>One developer, a lot of synthwave, and a soft spot for 16-bit consoles.</p></div></section>
 <article class="wrap section prose">
 <p>Nickar Electronic Games '82 is the studio of Nikolaos Karazafeiris, an independent developer making retro-spirited games and practical little apps.</p>
-<p>The games aim for the feel of late-80s and early-90s arcades and consoles. The apps and utilities start as tools I wanted for myself — and get released when they might be useful to you too.</p>
+<p>Music producer, game developer, graphics designer, photographer and more. The games aim for the feel of late-80s and early-90s arcades and consoles. The apps and utilities start as tools I wanted for myself — and get released when they might be useful to you too.</p>
+<h2>Music</h2>
+<p>As <strong>DJ Nickar</strong> I make music too — the album <em>Da Bass</em> is out now.</p>
+<div class="btn-row"><a class="btn btn-line" href="http://tinyurl.com/DJNickarDaBassSp" rel="noopener">Da Bass on Spotify</a>
+<a class="btn btn-line" href="http://tinyurl.com/DJ-NickarYTmusic" rel="noopener">Da Bass on YouTube Music</a></div>
+<h2>More projects</h2>
+<ul><li><a href="https://justgamergr.wordpress.com/" rel="noopener">Just Gamer v2.0</a> — my gaming blog</li></ul>
+<h2>Support my creations</h2>
+<p>Many of my tools are free. If one of them helped you, a coffee keeps the next one coming.</p>
+<p><a class="btn btn-sun" href="{COFFEE}" rel="noopener">☕ Buy me a coffee</a></p>
 <h2>Find me</h2>
 <ul>
 <li><a href="{YT}" rel="noopener">YouTube — @nickar82</a></li>
+<li><a href="https://www.instagram.com/nickar_82" rel="noopener">Instagram — @nickar_82</a></li>
+<li><a href="https://x.com/nickar82" rel="noopener">X — @nickar82</a></li>
+<li><a href="https://www.tiktok.com/@dj_nickar" rel="noopener">TikTok — @dj_nickar</a></li>
+<li><a href="http://facebook.com/nick.kar82" rel="noopener">Facebook</a></li>
 <li><a href="https://nickar82.itch.io" rel="noopener">itch.io — nickar82</a></li>
 <li><a href="{LINKTREE}" rel="noopener">You can find more of me here — linktr.ee/DJNickar</a></li>
 <li>Email: [CONTACT EMAIL]</li>
